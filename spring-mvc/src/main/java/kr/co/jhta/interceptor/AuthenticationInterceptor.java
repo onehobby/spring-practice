@@ -22,19 +22,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		/*
-		 * 1. 요청 URL 정보를 조회한다.
-		 * 2. 해당 URL에 접근하기 위한 접근권한을 조회한다.
-		 * 3. 접근권한이 없으면
-		 * 		다음 인터셉터 혹은 컨트롤러가 실행되도록한다.
-		 * 4. 접근권한이 있으면
-		 * 		로그인된 사용자인지 확인하고, 
-		 * 			로그인된 사용자라면 다음 인터셉터 혹은 컨트롤러가 실행되도록한다.
-		 * 			로그인된 사용자가 아니라면 로그인 폼 페이지로 이동시키다.\
-		 * * 결론
-		 * 		접근권한이 요구되는 URL 요청인데, 로그인된 사용자가 아니라면 
-		 * 	    로그인 페이지로 이동시킨다.
-		 */		
+	
 		String requestURI = request.getRequestURI();
 		List<String> reqRoles = roleDao.getRolesByUrl(requestURI);
 		request.setAttribute("reqRoles", reqRoles);
