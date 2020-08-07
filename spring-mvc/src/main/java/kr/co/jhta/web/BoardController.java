@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,6 +23,7 @@ import kr.co.jhta.form.BoardForm;
 import kr.co.jhta.service.BoardService;
 import kr.co.jhta.view.FileDownloadView;
 import kr.co.jhta.vo.Board;
+import kr.co.jhta.vo.User;
 
 /*
  * Spring MVC의 주요 어노테이션
@@ -161,9 +161,14 @@ public class BoardController {
 	//   매개변수로 선언하면, HandlerAdapter가 요청파라미터값을 조회해서
 	//   폼 커맨드객체에 자동으로 저장한 후, 요청핸들러 메소드 실행시 전달해준다.
 	// * <form />태그의 입력필드갯수가 많을 때 반복적인 코드를 효과적으로 줄일 수 있다.
-	public String addBoard(BoardForm boardForm) throws Exception {
+	public String addBoard(BoardForm boardForm, User user) throws Exception {
+		
+		if (user == null) {
+			return "redirect:/signin.do?error=deny";
+		}
 		
 		Board board = new Board();
+		board.setWriter(user.getId());
 		// BeanUtils.copyProperties(원본, 대상)
 		// * 원본객체의 필드값을 대상객체의 필드에 복사한다.
 		// * 원본객체의 필드명과 대상객체의 필드명이 동일한 필드만 복사가 발생한다.

@@ -2,6 +2,7 @@ package kr.co.jhta.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.jhta.dao.OrderDao;
 import kr.co.jhta.dao.ProductDao;
@@ -12,6 +13,7 @@ import kr.co.jhta.vo.Payment;
 import kr.co.jhta.vo.Product;
 
 @Service
+@Transactional
 public class OrderServiceImpl implements OrderService {
 
 	@Autowired
@@ -30,17 +32,14 @@ public class OrderServiceImpl implements OrderService {
 		
 		// 2. 주문상품정보 저장하기
 		item.setOrderNo(order.getNo());
-		System.out.println(item);
 		orderDao.insertOrderItem(item);
 		
 		// 3. 결재정보 저장하기
 		payment.setOrderNo(order.getNo());
-		System.out.println(payment);
 		orderDao.insertOrderPayment(payment);
 		
 		// 4. 배송정보 저장하기
 		delivery.setOrderNo(order.getNo());
-		System.out.println(delivery);
 		orderDao.insertOrderDelivery(delivery);
 		
 		// 5. 물품재고 변경
