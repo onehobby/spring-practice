@@ -20,8 +20,17 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
+		// 인증과정 통과여부를 조회한다.
 		String auth = (String) request.getAttribute("auth");
 		
+		// 인증과정 통과여부가 skip인 경우
+		//		- 접근권한이 필요없는 요청임
+		//		- 로그인 여부, 접근권한 소유여부를 체크할 필요가 없음
+		
+		// 인증과정 통과여부가 pass인 경우
+		//		- 접근권한이 필요한 요청임
+		//		- 로그인된 사용자임
+		//		- 로그인된 사용자가 필요한 접근권한을 가지고 있는지 체크해야 함
 		if ("pass".equals(auth)) {
 			List<String> reqRoles = (List<String>) request.getAttribute("reqRoles");
 			List<String> hasRoles = (List<String>) request.getAttribute("hasRoles");

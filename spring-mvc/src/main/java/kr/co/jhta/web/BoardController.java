@@ -163,10 +163,6 @@ public class BoardController {
 	// * <form />태그의 입력필드갯수가 많을 때 반복적인 코드를 효과적으로 줄일 수 있다.
 	public String addBoard(BoardForm boardForm, User user) throws Exception {
 		
-		if (user == null) {
-			return "redirect:/signin.do?error=deny";
-		}
-		
 		Board board = new Board();
 		board.setWriter(user.getId());
 		// BeanUtils.copyProperties(원본, 대상)
