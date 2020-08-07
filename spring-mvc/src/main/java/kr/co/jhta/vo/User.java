@@ -1,6 +1,7 @@
 package kr.co.jhta.vo;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
 
@@ -12,8 +13,17 @@ public class User {
 	private int age;
 	private Date birth;
 	private Date createdDate;
+	private List<String> roles;
 	
 	public User() {}
+	
+	public List<String> getRoles() {
+		return roles;
+	}
+	
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
 
 	public String getId() {
 		return id;
