@@ -15,6 +15,7 @@ import kr.co.jhta.vo.User;
 // 인증된 사용자가 해당 페이지에 대한 접근권한을 가지고 있는지 체크한다
 public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
