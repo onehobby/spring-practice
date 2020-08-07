@@ -57,6 +57,12 @@ public class JSONController {
 	
 	/*
 	 * ResponseEntity<T>로 JSON 응답보내기
+	 * 		- ResponseEntity<T>는 응답메세지를 보낼 때 사용하는 객체다.
+	 * 		- ResponseEntity<T>의 T는 응답으로 보낼 객체의 타입이다.
+	 * 		- new ResponseEntity<>(T body, HttpStatus status) 생성자로
+	 * 	      body부분에는 응답으로 보낼 데이터를 담고 있는 객체를
+	 *  	  status부분에는 HTTP 응답코드를 설정한다.
+	 *  @GetMapping의 produces는 생성가능한 응답컨텐츠의 타입을 설정한다.
 	 */
 	@GetMapping(path="/products2.do", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<Product>> getAllProducts2() {
