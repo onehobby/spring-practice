@@ -120,23 +120,18 @@ values(1033, 111, '다시, 수학이 필요한 순간', '김민형', '인플루�
 insert into spring_books 
 values(1034, 112, 'Do it! 점프 투 파이썬', '박응용', '이지스퍼블리싱', '1034.jpg', '파이썬 4년 연속 베스트셀러 1위! 『Do it! 점프 투 파이썬』 전면 개정판 출시!', 18800, 16920, 100, 0, 0, 'N', current_date, current_date, null);
 insert into spring_books 
-values(1035, 113, '혼자 공부하는 파이썬', '칼 세이건', '사이언스북스', '1035.jpg', '혼자 해도 충분하다! 1:1 과외하듯 배우는 파이썬 프로그래밍 자습서(파이썬 최신 버전 반영)', 18000, 16920, 100, 0, 0, 'N', current_date, current_date, null);
+values(1035, 112, '혼자 공부하는 파이썬', '칼 세이건', '사이언스북스', '1035.jpg', '혼자 해도 충분하다! 1:1 과외하듯 배우는 파이썬 프로그래밍 자습서(파이썬 최신 버전 반영)', 18000, 16920, 100, 0, 0, 'N', current_date, current_date, null);
 insert into spring_books 
-values(1036, 113, '파이썬 알고리즘 인터뷰', '박상길', '책만', '1036.jpg', '코딩 테스트와 인터뷰를 준비하는 취준생과 이직자를 위한 알고리즘 문제 풀이 완벽 마스터', 18000, 16200, 100, 0, 0, 'N', current_date, current_date, null);
+values(1036, 112, '파이썬 알고리즘 인터뷰', '박상길', '책만', '1036.jpg', '코딩 테스트와 인터뷰를 준비하는 취준생과 이직자를 위한 알고리즘 문제 풀이 완벽 마스터', 18000, 16200, 100, 0, 0, 'N', current_date, current_date, null);
 
 -- 주문상태 등록
 insert into spring_order_state_categories values(100000, '주문완료');
-insert into spring_order_state_categories values(100000, '주문취소');
-insert into spring_order_state_categories values(100000, '반품');
-insert into spring_order_state_categories values(100000, '상품준비중');
-insert into spring_order_state_categories values(100000, '배송대기중');
-insert into spring_order_state_categories values(100000, '배송중');
-insert into spring_order_state_categories values(100000, '배송완료');
-insert into spring_order_state_categories values(100000, '배송완료');
-
-
-
-
-
+insert into spring_order_state_categories values(100001, '주문취소');
+insert into spring_order_state_categories values(100002, '반품');
+insert into spring_order_state_categories values(100003, '상품준비중');
+insert into spring_order_state_categories values(100004, '배송대기중');
+insert into spring_order_state_categories values(100005, '배송중');
+insert into spring_order_state_categories values(100006, '배송완료');
+insert into spring_order_state_categories values(100007, '배송완료');
 
 commit;

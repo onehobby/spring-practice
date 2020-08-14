@@ -3,4 +3,70 @@
 
 <mapper namespace="com.sample.dao.BookDao">
 
+	<select id="getRecordCount" parameterType="criteria" resultType="int">
+		select count(*)
+		from spring_books
+		<where>
+			<if test="opt == 'title'">
+				and book_title like '%' || #{keyword} || '%'
+			</if>
+			<if test="opt == 'writer'">
+				and book_writer = #{keyword}
+			</if>
+			<if test="opt == 'publisher'">
+				and A.book_publisher &lt;= #{keyword} 
+			</if>
+		</where>
+	</select>
+
+	<select id="getBooks" parameterType="criteria" resultType="book">
+		select
+			A.book_no					as no,
+			A.book_category_no			as "category.no",
+			B.book_category_name		as "category.name",
+			A.book_title				as title,
+			A.book_writer				as writer,
+			A.book_publisher			as publisher,
+			A.book_cover_image_filename	as coverImageFilename,
+			A.book_summary				as summary,
+			A.book_price				as price,
+			A.book_discount_price		as discountPrice,
+			A.book_stock				as stock,
+			A.book_review_cnt			as reviewCnt,
+			A.book_review_score			as reviewScore,
+			A.book_deleted				as deleted,
+			A.book_created_date			as createdDate,
+			A.book_updated_date			as updatedDate,
+			A.book_deleted_date			as deleted
+		from
+			spring_books A, spring_book_categories B
+		where 
+			A.book_category_no = B.book_category_no
+		<if test="opt == 'title'">
+			and book_title like '%' || #{keyword} || '%'
+		</if>
+		<if test="opt == 'writer'">
+			and A.book_writer = #{keyword}
+		</if>
+		<if test="opt == 'publisher'">
+			and A.book_publisher &lt;= #{keyword} 
+		</if>
+		<choose>
+			<when test="orderby == 'new'">
+				order by A.book_no ${sort}				
+			</when>
+			<when test="orderby == 'price'">
+				order by A.book_price ${sort}					
+			</when>
+			<when test="orderby == 'score'">
+				order by A.book_score ${sort}					
+			</when>
+			<otherwise>
+				order by A.book_no desc				
+			</otherwise>
+		</choose>
+		limit #{rows}
+		offset #{beginIndex}
+	</select>
+
 </mapper>

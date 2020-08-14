@@ -85,7 +85,7 @@ create table spring_books (
 	book_title varchar(1000) not null,
 	book_writer varchar(100) not null,
 	book_publisher varchar(100) not null,
-	book_cover_file_name varchar(256),
+	book_cover_image_filename varchar(256),
 	book_summary varchar(1000) not null,
 	book_price integer,
 	book_discount_price integer,

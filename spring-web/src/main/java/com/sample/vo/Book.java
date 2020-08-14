@@ -15,7 +15,7 @@ public class Book {
 	private String title;
 	private String writer;
 	private String publisher;
-	private String coverFilename;
+	private String coverImageFilename;
 	private String summary;
 	private int price;
 	private int discountPrice;
@@ -28,7 +28,7 @@ public class Book {
 	private Date deletedDate;
 	
 	@Builder
-	public Book(int no, BookCategory category, String title, String writer, String publisher, String coverFilename,
+	public Book(int no, BookCategory category, String title, String writer, String publisher, String coverImageFilename,
 			String summary, int price, int discountPrice, int stock, int reviewCnt, double reviewScore, String deleted,
 			Date createdDate, Date updatedDate, Date deletedDate) {
 		super();
@@ -37,7 +37,7 @@ public class Book {
 		this.title = title;
 		this.writer = writer;
 		this.publisher = publisher;
-		this.coverFilename = coverFilename;
+		this.coverImageFilename = coverImageFilename;
 		this.summary = summary;
 		this.price = price;
 		this.discountPrice = discountPrice;
